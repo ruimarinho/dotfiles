@@ -1,0 +1,13 @@
+[
+    { "keys": ["super+l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+    { "keys": ["super+ctrl+r"], "command": "reveal_in_side_bar" },
+    { "keys": ["super+shift+\\"], "command": "reveal_in_side_bar" },
+    { "keys": ["super+alt+r"], "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"} },
+    { "keys": ["super+shift+r"], "command": "goto_symbol_in_project" },
+    { "keys": ["ctrl+alt+i"], "command": "js_format" },
+    { "keys": ["ctrl+\\"], "command": "valign" },
+    { "keys": ["super+shift+h"], "command": "goto_documentation" },
+    { "keys": ["super+alt+r"], "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"} },
+    { "keys": ["alt+shift+o"], "command": "close_others" },
+    { "keys": ["alt+shift+r"], "command": "close_to_right" },
+]

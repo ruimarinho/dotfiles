@@ -1,0 +1,129 @@
+#!/bin/bash -e
+
+# Install brew dependencies.
+install_brew() {
+  echo "Running brew..."
+  brew bundle --file=brew/Brewfile
+}
+
+# Install ZIM.
+install_zim() {
+  if [ -d "$HOME/.zim" ]; then
+    echo "Skipping zim installation..."
+    return 0;
+  fi
+
+  echo "Installing zim..."
+  git clone --recursive https://github.com/Eriner/zim.git "$HOME/.zim"
+}
+
+# Set zsh as the default shell.
+switch_to_zsh() {
+  if [ "$(dscl . -read /Users/$(whoami) UserShell | cut -d ' ' -f 2)" == "/bin/zsh" ]; then
+    echo "Skipping setting zsh as default shell..."
+    return 0;
+  fi
+
+  echo "Setting zsh as default shell..."
+  sudo chsh -s "$(which zsh)" "$USER"
+}
+
+# Custom zsh modules for zim.
+configure_zim() {
+  if [ -e ~/.zim/modules/custom ]; then
+    echo "Symlinking custom modules..."
+    ln -sfv $(pwd)/library/zsh/custom ~/.zim/modules/custom | nl -bn
+  fi
+
+  if [ -e ~/.zim/modules/npm ]; then
+    echo "Symlinking npm module..."
+    ln -sfv $(pwd)/library/zsh/npm ~/.zim/modules/npm | nl -bn
+  fi
+
+  if [ -e ~/.zim/modules/sublime ]; then
+    echo "Symlinking sublime module..."
+    ln -sfv $(pwd)/library/zsh/sublime ~/.zim/modules/sublime | nl -bn
+  fi
+}
+
+# Add vim Vundle.
+configure_vim() {
+  if [ -e $HOME/.vim/bundle/Vundle.vim ]; then
+    echo "Skipping vim vundle..."
+    return 0;
+  fi
+
+  echo "Installing vim vundle..."
+  git clone https://github.com/gmarik/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+  vim -u $HOME/.vimrc.bundles +PluginUpdate +qa
+}
+
+# Setup rc files.
+symlink_dotfiles() {
+  echo "Symlinking dotfiles..."
+  rcup -vd packages | nl -bn
+}
+
+# Install latest node.js.
+install_nodejs() {
+  if [ ! -x "$(which n 2> /dev/null)" ]; then
+    return 1;
+  fi
+
+  echo "Installing latest node.js..."
+  n latest
+}
+
+# Sublime Text 3.
+configure_sublime() {
+  if [ -e ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/Package\ Control.sublime-package ]; then
+    echo "Skipping Sublime defaults..."
+    return 0;
+  fi
+
+  echo "Applying Sublime defaults..."
+  curl https://packagecontrol.io/Package%20Control.sublime-package -o ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/Package\ Control.sublime-package
+  rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+  ln -sfv $(pwd)/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+}
+
+# Configure iTerm defaults.
+configure_iterm() {
+  if [ -e ~/Library/Application\ Support/iTerm2/DynamicProfiles ]; then
+    echo "Skipping iTerm defaults..."
+    return 0;
+  fi
+
+  echo "Applying iTerm defaults..."
+  ln -sfv $(pwd)/library/iterm/profiles/default.json ~/Library/Application\ Support/iTerm2/DynamicProfiles
+  source library/iterm/defaults
+}
+
+# Configure hosts for blocking adtertisement and malware.
+configure_hosts() {
+  if grep -qE "Start StevenBlack" /etc/hosts; then
+    echo "Skipping configuring hosts file..."
+    return 0;
+  fi
+
+  echo "Configuring hosts file..."
+  curl "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts" | sudo tee -a /etc/hosts
+}
+
+# Configure macOS defaults.
+configure_macos() {
+  echo "Applying macOS defaults..."
+  source macos/defaults
+}
+
+install_brew
+install_zim
+switch_to_zsh
+symlink_dotfiles
+install_nodejs
+configure_zim
+configure_vim
+configure_sublime
+configure_iterm
+configure_hosts
+configure_macos

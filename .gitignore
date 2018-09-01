@@ -1,0 +1,3 @@
+*.local
+library/sublime/User/*
+!library/sublime/User/*.sublime*

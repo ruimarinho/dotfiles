@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Dimming.
+defaults write com.googlecode.iterm2 DimInactiveSplitPanes -bool false
+defaults write com.googlecode.iterm2 DimOnlyText -bool true
+defaults write com.googlecode.iterm2 SplitPaneDimmingAmount -float 0.5
+
+# Hide split pane titlebars.
+defaults write com.googlecode.iterm2 ShowPaneTitles -bool false
+
+# Dark mode.
+defaults write com.googlecode.iterm2 TabStyle -int 1
+
+# Load dynamic profile.
+defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "E846F895-ABE4-445A-B13F-80B5400E3CEC"
+
+# Enable session restoration.
+defaults write com.googlecode.iterm2 KillJobsInServersOnQuit -bool false
+defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -bool false
+
+# Do not prompt confirm modal when quitting.
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+# Enable automatic updates.
+defaults write com.googlecode.iterm2 SUEnableAutomaticChecks -bool true
+
+# Disable tips.
+defaults write com.googlecode.iterm2 NoSyncPermissionToShowTip -bool false
+
+# Show job name.
+defaults write com.googlecode.iterm2 JobName -bool true
+
+# Do not share profile info.
+defaults write com.googlecode.iterm2 SUSendProfileInfo -bool false
