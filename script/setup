@@ -15,6 +15,9 @@ install_zim() {
 
   echo "Installing zim..."
   git clone --recursive https://github.com/Eriner/zim.git "$HOME/.zim"
+
+  switch_to_zsh
+  configure_zim
 }
 
 # Set zsh as the default shell.
@@ -30,20 +33,23 @@ switch_to_zsh() {
 
 # Custom zsh modules for zim.
 configure_zim() {
-  if [ -e ~/.zim/modules/custom ]; then
-    echo "Symlinking custom modules..."
-    ln -sfv $(pwd)/library/zsh/custom ~/.zim/modules/custom | nl -bn
-  fi
+  echo "Initializing zim templates..."
+  setopt EXTENDED_GLOB
+  for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
+    user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
+    touch ${user_file}
+    ( print -rn "$(<${template_file})$(<${user_file})" >! ${user_file} ) 2>/dev/null
+  done
 
-  if [ -e ~/.zim/modules/npm ]; then
-    echo "Symlinking npm module..."
-    ln -sfv $(pwd)/library/zsh/npm ~/.zim/modules/npm | nl -bn
-  fi
+  echo "Symlinking custom modules..."
+  rm -rf ~/.zim/modules/custom
+  ln -sfv $(pwd)/library/zsh/custom ~/.zim/modules/custom | nl -bn
 
-  if [ -e ~/.zim/modules/sublime ]; then
-    echo "Symlinking sublime module..."
-    ln -sfv $(pwd)/library/zsh/sublime ~/.zim/modules/sublime | nl -bn
-  fi
+  echo "Symlinking npm module..."
+  ln -sfv $(pwd)/library/zsh/npm ~/.zim/modules/npm | nl -bn
+
+  echo "Symlinking sublime module..."
+  ln -sfv $(pwd)/library/zsh/sublime ~/.zim/modules/sublime | nl -bn
 }
 
 # Add vim Vundle.
@@ -61,7 +67,7 @@ configure_vim() {
 # Setup rc files.
 symlink_dotfiles() {
   echo "Symlinking dotfiles..."
-  rcup -vd packages | nl -bn
+  rcup -fvd packages | nl -bn
 }
 
 # Install latest node.js.
@@ -71,6 +77,9 @@ install_nodejs() {
   fi
 
   echo "Installing latest node.js..."
+  sudo mkdir -p /usr/local/n
+  sudo chown -R $(whoami) /usr/local/n
+  sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
   n latest
 }
 
@@ -82,6 +91,7 @@ configure_sublime() {
   fi
 
   echo "Applying Sublime defaults..."
+  mkdir -p ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/
   curl https://packagecontrol.io/Package%20Control.sublime-package -o ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/Package\ Control.sublime-package
   rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
   ln -sfv $(pwd)/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
@@ -118,10 +128,8 @@ configure_macos() {
 
 install_brew
 install_zim
-switch_to_zsh
 symlink_dotfiles
 install_nodejs
-configure_zim
 configure_vim
 configure_sublime
 configure_iterm
