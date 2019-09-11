@@ -105,6 +105,7 @@ configure_iterm() {
   fi
 
   echo "Applying iTerm defaults..."
+  mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
   ln -sfv $(pwd)/library/iterm/profiles/default.json ~/Library/Application\ Support/iTerm2/DynamicProfiles
   source library/iterm/defaults
 }
