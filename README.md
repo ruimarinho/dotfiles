@@ -15,7 +15,6 @@ They are great for shared and collaborative environments where everyone is alway
 * Installs vim [Vundle](https://github.com/VundleVim/Vundle.vim), a fine plug-in manager for Vim.
 * Symlinks dotfiles to home dir via [rcm](https://github.com/thoughtbot/rcm), arguably the best dotfile manager in existence.
 * Configures a number of macOS [defaults](macos/defaults) to fit my needs and personal taste.
-* Adds thousands of blacklisted domains to prevent advertisement and malware using [StevenBlack's hosts list](https://github.com/StevenBlack/hosts).
 * Adds customization to [iTerm2](https://www.iterm2.com), [Sublime Text](https://www.sublimetext.com) and [vim](https://www.vim.org). For Atom, I prefer using the [sync-settings](https://atom.io/packages/sync-settings) package.
 * Enables highlighting via `grc` for several binaries, such as docker, curl, make and many others. Beautiful colors, everywhere.
 * Configures `git` with aliases and to source a local file (`~/.gitconfig.local`) for further customization (username, gpg key id, etc.).
@@ -66,4 +65,3 @@ The `setup` script has some safeguards in place but I can't say it's idempotent.
 
 * Some zim modules need to converted into upstream pull requests.
 * Add default handlers and applications configuration for certain file types ([duti](http://duti.org) is not working on macOS 10.14).
-* Find a better way to handle hosts file management.

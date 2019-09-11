@@ -109,17 +109,6 @@ configure_iterm() {
   source library/iterm/defaults
 }
 
-# Configure hosts for blocking adtertisement and malware.
-configure_hosts() {
-  if grep -qE "Start StevenBlack" /etc/hosts; then
-    echo "Skipping configuring hosts file..."
-    return 0;
-  fi
-
-  echo "Configuring hosts file..."
-  curl "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts" | sudo tee -a /etc/hosts
-}
-
 # Configure macOS defaults.
 configure_macos() {
   echo "Applying macOS defaults..."
@@ -133,5 +122,4 @@ install_nodejs
 configure_vim
 configure_sublime
 configure_iterm
-configure_hosts
 configure_macos
