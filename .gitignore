@@ -1,3 +1,4 @@
 *.local
+*.zwc*
 library/sublime/User/*
 !library/sublime/User/*.sublime*
