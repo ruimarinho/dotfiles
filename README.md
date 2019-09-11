@@ -22,6 +22,17 @@ They are great for shared and collaborative environments where everyone is alway
 * Configures `ssh` to fix some quirks with High Sierra or higher and to source local files for further customization (`~/.ssh/*.local`).
 * Configures [psql](https://www.postgresql.org/docs/current/static/app-psql.html) for improved output and to source a local file (`~/.psqlrc.local`) for further customization.
 
+### Docker Credential Helpers
+
+To use the provided `docker-credential-aws-google-auth` binary, edit `~/.docker/config.json` and configure `credHelpers`:
+
+```
+{
+  "credHelpers" : {
+    "<accountId>.dkr.ecr.<region>.amazonaws.com" : "aws-google-auth"
+  }
+}
+```
 
 ## Requirements
 

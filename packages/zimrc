@@ -39,7 +39,7 @@ ztermtitle='%n@%m:%~'
 
 # Set gopath.
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/.docker/bin:$GOPATH/bin:$PATH
 
 #
 # Input
