@@ -46,3 +46,16 @@ bindkey "^U" backward-kill-line
 
 # Add binding for Cmd+Shift+Z (redo).
 bindkey "^X^_" redo
+
+
+#
+# fzf
+#
+
+if (( $+commands[fzf] )); then
+  # Key bindings
+  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+  # Auto-completion
+  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+fi
