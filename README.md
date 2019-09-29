@@ -61,6 +61,15 @@ Because I do not frequently run the bootstrap script — most of the changes are
 
 The `setup` script has some safeguards in place but I can't say it's idempotent. It can be ran multiple times without *negative* consequences — Homebrew will verify all packages are installed all the time, macOS defaults will be re-applied, new dotfiles symlinked and so on.
 
+## Environment Variables
+
+### iodine
+
+- IODINE_DOMAIN
+- IODINE_PASSWORD
+- IODINE_DEVICE
+- IODINE_IP
+
 ## Next steps
 
 * Some zim modules need to converted into upstream pull requests.
