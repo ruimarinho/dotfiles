@@ -64,4 +64,4 @@ The `setup` script has some safeguards in place but I can't say it's idempotent.
 ## Next steps
 
 * Some zim modules need to converted into upstream pull requests.
-* Add default handlers and applications configuration for certain file types ([duti](http://duti.org) is not working on macOS 10.14).
+* Add default handlers and applications configuration for certain file types with ([duti](https://github.com/moretension/duti) or equivalent.
