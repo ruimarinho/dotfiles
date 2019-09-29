@@ -63,12 +63,32 @@ The `setup` script has some safeguards in place but I can't say it's idempotent.
 
 ## Environment Variables
 
+### AWS
+
+- AWS_DEFAULT_REGION
+- AWS_PROFILE
+- AWS_ROLE_ARN
+
+### GitHub
+
+- CHANGELOG_GITHUB_TOKEN
+
+### aws-google-auth
+- GOOGLE_IDP_ID
+- GOOGLE_SP_ID
+- GOOGLE_USERNAME
+
 ### iodine
 
 - IODINE_DOMAIN
 - IODINE_PASSWORD
 - IODINE_DEVICE
 - IODINE_IP
+
+### Shell
+
+- LANG=en_US.UTF-8
+- PATH="/usr/local/opt/inetutils/libexec/gnubin:$HOME/.docker/bin:$HOME/Library/Python/3.7/bin::$PATH"
 
 ## Next steps
 
