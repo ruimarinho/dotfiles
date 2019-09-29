@@ -79,9 +79,6 @@
     ui = true
     indentHeuristic = true
 
-[commit]
-    template = ~/.gitmessage
-
 [core]
     attributesfile = ~/.gitattributes
     autocrlf = input
