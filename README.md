@@ -59,7 +59,7 @@ Feel free to clone or fork this setup. These dotfiles have been heavily inspired
 
 Because I do not frequently run the bootstrap script — most of the changes are inside existing dotfiles — a simple git pull will automatically take place as those files are symlinked by `rcm`.
 
-The `setup` script has some safeguards in place but I can't say it's idempotent. It can be ran multiple times without *negative* consequences — Homebrew will verify all packages are installed all the time, macOS defaults will be re-applied, new dotfiles symlinked and so on.
+The `setup` script has some safeguards in place but it's not very robust. Best used on fresh installs.
 
 ## Next steps
 
