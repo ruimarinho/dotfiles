@@ -21,18 +21,6 @@ They are great for shared and collaborative environments where everyone is alway
 * Configures `ssh` to fix some quirks with High Sierra or higher and to source local files for further customization (`~/.ssh/*.local`).
 * Configures [psql](https://www.postgresql.org/docs/current/static/app-psql.html) for improved output and to source a local file (`~/.psqlrc.local`) for further customization.
 
-### Docker Credential Helpers
-
-To use the provided `docker-credential-aws-google-auth` binary, edit `~/.docker/config.json` and configure `credHelpers`:
-
-```
-{
-  "credHelpers" : {
-    "<accountId>.dkr.ecr.<region>.amazonaws.com" : "aws-google-auth"
-  }
-}
-```
-
 ## Requirements
 
 Just install Homebrew which will prompt you to install *Command Line Tools (CLT) for Xcode*.
@@ -54,6 +42,18 @@ The rest of the utilities will be provided by Homebrew when sourcing the bundled
 2. Run `script/setup`.
 
 Feel free to clone or fork this setup. These dotfiles have been heavily inspired over the years by many others in the open source community, to whom I am grateful for.
+
+### Docker Credential Helpers
+
+To use the provided `docker-credential-aws-google-auth` binary, edit `~/.docker/config.json` and configure `credHelpers`:
+
+```
+{
+  "credHelpers" : {
+    "<accountId>.dkr.ecr.<region>.amazonaws.com" : "aws-google-auth"
+  }
+}
+```
 
 ## Updating
 
