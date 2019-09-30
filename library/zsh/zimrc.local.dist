@@ -1,0 +1,28 @@
+##
+# GitHub
+##
+CHANGELOG_GITHUB_TOKEN=
+
+##
+# aws-google-auth
+##
+AWS_DEFAULT_REGION=
+AWS_PROFILE=
+AWS_ROLE_ARN=
+GOOGLE_IDP_ID=
+GOOGLE_SP_ID=
+GOOGLE_USERNAME=
+
+##
+# iodine
+##
+IODINE_DOMAIN=
+IODINE_PASSWORD=
+IODINE_DEVICE=
+IODINE_IP=
+
+##
+# Shell
+##
+LANG=en_US.UTF-8
+PATH="/usr/local/opt/inetutils/libexec/gnubin:$HOME/.docker/bin:$HOME/Library/Python/3.7/bin::$PATH"
