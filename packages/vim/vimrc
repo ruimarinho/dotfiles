@@ -3,11 +3,14 @@ if filereadable(expand("~/.vim/vimrc.bundles"))
   source ~/.vim/vimrc.bundles
 endif
 
+set termguicolors
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
-  colorscheme Tomorrow-Night-Eighties
+  colorscheme ayu
+  let ayucolor="dark"
 endif
 
 " Leader
@@ -56,6 +59,7 @@ set expandtab              " expand tabs to spaces
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
 set virtualedit=block      " allow virtual edit in visual block ..
+set nonumber
 
 " UI
 set ruler                  " show the cursor position all the time
