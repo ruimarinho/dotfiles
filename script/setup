@@ -34,7 +34,6 @@ switch_to_zsh() {
 # Custom zsh modules for zim.
 configure_zim() {
   echo "Initializing zim templates..."
-  setopt EXTENDED_GLOB
   for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
     user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
     touch ${user_file}
