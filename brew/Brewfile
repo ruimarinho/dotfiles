@@ -17,14 +17,12 @@ cask 'brave-browser'
 cask 'coconutbattery'
 cask 'cyberduck'
 cask 'docker'
-cask 'freesmug-chromium'
 cask 'ftdi-vcp-driver'
 cask 'gpg-suite'
 cask 'iina'
 cask 'iterm2'
 cask 'kap'
 cask 'keepingyouawake'
-cask 'keybase'
 cask 'ledger-live'
 cask 'postico'
 cask 'prolific-pl2303'
@@ -63,3 +61,10 @@ brew 'telnet'
 brew 'tldr'
 brew 'trash'
 brew 'yubico-piv-tool'
+
+# Mac App Store
+mas "Apple Configurator 2", id: 1037126344
+mas "HEIC Converter", id: 1294126402
+mas "Reeder 3", id: 880001334
+mas "WiFi Explorer Lite", id: 1408727408
+mas "Xcode", id: 497799835
