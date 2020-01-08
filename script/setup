@@ -82,6 +82,25 @@ install_nodejs() {
   n latest
 }
 
+# Configure duti default file handlers.
+configure_duti() {
+  echo "Applying duti defaults..."
+
+  # VS Code
+  local vsCodeExtensions=(json md py sh yaml yml)
+  for extension in "${vsCodeExtensions[@]}"
+  do
+    duti -s com.microsoft.VSCode .${extension} all
+  done
+
+  # The Unarchiver
+  local unarchiverExtensions=(zip rar)
+  for extension in "${unarchiverExtensions[@]}"
+  do
+    duti -s com.macpaw.site.theunarchiver .${extension} all
+  done
+}
+
 # Sublime Text 3.
 configure_sublime() {
   if [ -e ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/Package\ Control.sublime-package ]; then
@@ -119,6 +138,7 @@ install_brew
 install_zim
 symlink_dotfiles
 install_nodejs
+configure_duti
 configure_vim
 configure_sublime
 configure_iterm

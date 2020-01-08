@@ -17,6 +17,7 @@ They are great for shared and collaborative environments where everyone is alway
 * Configures a number of macOS [defaults](macos/defaults) to fit my needs and personal taste.
 * Adds customization to [iTerm2](https://www.iterm2.com), [Sublime Text](https://www.sublimetext.com) and [vim](https://www.vim.org). For Atom, I prefer using the [sync-settings](https://atom.io/packages/sync-settings) package.
 * Enables highlighting via `grc` for several binaries, such as docker, curl, make and many others. Beautiful colors, everywhere.
+* Configures default handlers and applications configuration for certain file types with [duti](https://github.com/moretension/duti) (e.g. `.md`, `.json`, `.yml`).
 * Configures `git` with aliases and to source a local file (`~/.gitconfig.local`) for further customization (username, gpg key id, etc.).
 * Configures `ssh` to fix some quirks with High Sierra or higher and to source local files for further customization (`~/.ssh/*.local`).
 * Configures [psql](https://www.postgresql.org/docs/current/static/app-psql.html) for improved output and to source a local file (`~/.psqlrc.local`) for further customization.
@@ -64,4 +65,3 @@ The `setup` script has some safeguards in place but it's not very robust. Best u
 ## Next steps
 
 * Some zim modules need to converted into upstream pull requests.
-* Add default handlers and applications configuration for certain file types with ([duti](https://github.com/moretension/duti) or equivalent.
