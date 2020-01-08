@@ -61,7 +61,3 @@ To use the provided `docker-credential-aws-google-auth` binary, edit `~/.docker/
 Because I do not frequently run the bootstrap script — most of the changes are inside existing dotfiles — a simple git pull will automatically take place as those files are symlinked by `rcm`.
 
 The `setup` script has some safeguards in place but it's not very robust. Best used on fresh installs.
-
-## Next steps
-
-* Some zim modules need to converted into upstream pull requests.

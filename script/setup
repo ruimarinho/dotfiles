@@ -6,49 +6,17 @@ install_brew() {
   brew bundle --file=brew/Brewfile
 }
 
-# Install ZIM.
-install_zim() {
-  if [ -d "$HOME/.zim" ]; then
-    echo "Skipping zim installation..."
+# Install zplugin.
+install_zplugin() {
+  if [ "$(command -v zplugin)" ]; then
+    echo "Skipping zplugin installation..."
     return 0;
   fi
 
-  echo "Installing zim..."
-  git clone --recursive https://github.com/Eriner/zim.git "$HOME/.zim"
+  echo "Installing zplugin..."
 
-  switch_to_zsh
-  configure_zim
-}
-
-# Set zsh as the default shell.
-switch_to_zsh() {
-  if [ "$(dscl . -read /Users/$(whoami) UserShell | cut -d ' ' -f 2)" == "/bin/zsh" ]; then
-    echo "Skipping setting zsh as default shell..."
-    return 0;
-  fi
-
-  echo "Setting zsh as default shell..."
-  sudo chsh -s "$(which zsh)" "$USER"
-}
-
-# Custom zsh modules for zim.
-configure_zim() {
-  echo "Initializing zim templates..."
-  for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
-    user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
-    touch ${user_file}
-    ( print -rn "$(<${template_file})$(<${user_file})" >! ${user_file} ) 2>/dev/null
-  done
-
-  echo "Symlinking custom modules..."
-  rm -rf ~/.zim/modules/custom
-  ln -sfv $(pwd)/library/zsh/custom ~/.zim/modules/custom | nl -bn
-
-  echo "Symlinking npm module..."
-  ln -sfv $(pwd)/library/zsh/npm ~/.zim/modules/npm | nl -bn
-
-  echo "Symlinking sublime module..."
-  ln -sfv $(pwd)/library/zsh/sublime ~/.zim/modules/sublime | nl -bn
+  # Install zplugin.
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
 }
 
 # Add vim Vundle.
@@ -135,7 +103,7 @@ configure_macos() {
 }
 
 install_brew
-install_zim
+install_zplugin
 symlink_dotfiles
 install_nodejs
 configure_duti

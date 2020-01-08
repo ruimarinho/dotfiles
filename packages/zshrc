@@ -1,0 +1,64 @@
+# Zplugin startup
+ source "$HOME/.zplugin/bin/zplugin.zsh"
+ autoload -Uz _zplugin
+ (( ${+_comps} )) && _comps[zplugin]=_zplugin
+
+ # Source local zsh configs
+ if [[ -s "${HOME}/.zshrc.local" ]]; then
+   source "${HOME}/.zshrc.local"
+ fi
+
+ # Setup Zsh cache (needed for fzf)
+ export ZSH_CACHE_DIR="${TMPDIR:-/tmp}"
+
+ # Setup extra paths
+ export PATH=$PATH:$HOME/Library/Python/3.7/bin
+
+ alias z='fasd_cd -d'
+
+ # Theme
+ zplugin ice pick"async.zsh" src"pure.zsh"
+ zplugin light "sindresorhus/pure"
+
+ # Modules
+ zplugin ice wait"0" lucid multisrc"shell/{completion,key-bindings}.zsh"
+ zplugin light "junegunn/fzf"
+
+ zplugin ice wait"0" lucid atload"_zsh_autosuggest_start"
+ zplugin light "zsh-users/zsh-autosuggestions"
+
+ zplugin ice wait"0" lucid blockf
+ zplugin light "zsh-users/zsh-completions"
+
+ zplugin ice wait"0" lucid atinit"zpcompinit; zpcdreplay"
+ zplugin light "zdharma/fast-syntax-highlighting"
+
+ zplugin ice wait"0" lucid src"autopair.zsh"
+ zplugin light "hlissner/zsh-autopair"
+
+ zplugin ice wait"0" lucid
+ zplugin light 'djui/alias-tips'
+
+ # Snippets
+ zplugin ice svn atclone'git clone https://github.com/clvv/fasd external'
+ zplugin snippet PZT::modules/fasd
+
+ zplugin ice wait"0" lucid
+ zplugin snippet "OMZ::plugins/kubectl/kubectl.plugin.zsh"
+
+ zplugin ice wait"0" lucid
+ zplugin snippet "https://github.com/zimfw/zimfw/raw/master/modules/completion/init.zsh"
+
+ zplugin ice wait"0" lucid
+ zplugin snippet "https://github.com/zimfw/zimfw/raw/master/modules/input/init.zsh"
+
+ zplugin ice wait"0" lucid
+ zplugin snippet "https://github.com/zimfw/zimfw/raw/master/modules/utility/init.zsh"
+
+ zplugin ice wait"0" lucid
+ zplugin snippet "https://github.com/thoughtbot/dotfiles/raw/master/zsh/functions/g"
+
+ zplugin ice wait"0" lucid
+ zplugin snippet "$HOME/.zplugin/hooks/npm-bin-hook.zsh"
+
+ zplugin snippet "OMZ::lib/history.zsh"
