@@ -28,7 +28,7 @@ configure_vim() {
 
   echo "Installing vim vundle..."
   git clone https://github.com/gmarik/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
-  vim -u $HOME/.vimrc.bundles +PluginUpdate +qa
+  vim -u $HOME/.vim/vimrc.bundles +PluginUpdate +qa
 }
 
 # Setup rc files.
