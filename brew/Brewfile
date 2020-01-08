@@ -1,11 +1,7 @@
 # Taps
 tap 'homebrew/cask-drivers'
+tap 'mas-cli/tap'
 tap 'thoughtbot/formulae'
-
-# The tap-pin command is necessary since mas is already included in the core
-# tap of Homebrew. A pinned tap's formulae take precedence over duplicates in
-# other taps.
-tap 'mas-cli/tap', pin: true
 
 # Casks
 cask '1password'
