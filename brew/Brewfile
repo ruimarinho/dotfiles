@@ -67,6 +67,7 @@ brew 'trash'
 brew 'yubico-piv-tool'
 
 # Mac App Store
+mas "AdGuard for Safari", id: 1440147259
 mas "Apple Configurator 2", id: 1037126344
 mas "HEIC Converter", id: 1294126402
 mas "Reeder 3", id: 880001334
